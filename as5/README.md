@@ -62,6 +62,14 @@ If you don't want to use the inspectIT CMR docker image or cannot link to it, yo
 $ docker run -d -e INSPECTIT_CMR_ADDR=<cmr-ip-address> -e INSPECTIT_CMR_PORT=<cmr-port> -p 8080:8080 inspectit/jboss:5
 ```
 
+### Wait for inspectIT CMR startup
+Sometimes it is necessary to delay the jboss startup until the CMR is successfully started, e.g. if containers are started with docker-compose. For this purpose, a wait time can be passed as environment variable. CMR connectivity is checked each second.
+
+```bash
+$ docker run -d -e INSPECTIT_CMR_ADDR=<cmr-ip-address> -e INSPECTIT_CMR_PORT=<cmr-port> -e INSPECTIT_CMR_WAIT=<seconds> -p 8080:8080 inspectit/jboss:5
+```
+
+
 ## Specifying the JBoss version
 Currently, this image is based on the JBoss 5 image. Support for different version 6 and 7 is also available.
 
